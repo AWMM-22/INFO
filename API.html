@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Demo</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            padding:20px;
+        }
+
+        button{
+            padding:10px;
+            margin:5px;
+        }
+
+        #output{
+            margin-top:20px;
+            border:1px solid black;
+            padding:15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Fetch API Examples</h2>
+
+<button onclick="getWeather()">
+Weather
+</button>
+
+<button onclick="getJoke()">
+Random Joke
+</button>
+
+<button onclick="getGithub()">
+GitHub User
+</button>
+
+<div id="output">
+Output will appear here...
+</div>
+
+<script>
+
+function getWeather()
+{
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=19.03&longitude=73.10&current_weather=true")
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("output").innerHTML =
+        "<h3>Weather</h3>" +
+        "Temperature: " +
+        data.current_weather.temperature +
+        " °C <br>" +
+
+        "Wind Speed: " +
+        data.current_weather.windspeed +
+        " km/h";
+
+    })
+
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+function getJoke()
+{
+    fetch("https://official-joke-api.appspot.com/random_joke")
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("output").innerHTML =
+        "<h3>Random Joke</h3>" +
+        data.setup +
+        "<br><br>" +
+        data.punchline;
+
+    })
+
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+function getGithub()
+{
+    fetch("https://api.github.com/users/octocat")
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("output").innerHTML =
+        "<h3>GitHub User</h3>" +
+
+        "Username: " +
+        data.login +
+        "<br><br>" +
+
+        "Followers: " +
+        data.followers +
+        "<br><br>" +
+
+        "Public Repositories: " +
+        data.public_repos;
+
+    })
+
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+</script>
+
+</body>
+</html>
