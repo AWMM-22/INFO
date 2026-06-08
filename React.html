@@ -1,0 +1,42 @@
+APP.js
+
+import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="container">
+
+      <h1>Counter App</h1>
+
+      <h2>{count}</h2>
+
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+
+      <button onClick={() => setCount(count - 1)}>
+        Decrement
+      </button>
+
+    </div>
+  );
+}
+
+export default App;
+
+APP.css
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+}
