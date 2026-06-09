@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive Website</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+}
+
+header{
+    background:green;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    display:flex;
+    justify-content:space-around;
+    padding:20px;
+}
+
+.box{
+    width:250px;
+    border:1px solid black;
+    padding:20px;
+    text-align:center;
+}
+
+/* Responsive Design */
+
+@media(max-width:768px)
+{
+    .container{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .box{
+        margin:10px;
+    }
+}
+
+footer{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Responsive Grocery Mart</h1>
+</header>
+
+<div class="container">
+
+    <div class="box">
+        <h2>Apple</h2>
+        <p>₹120/kg</p>
+    </div>
+
+    <div class="box">
+        <h2>Banana</h2>
+        <p>₹60/dozen</p>
+    </div>
+
+    <div class="box">
+        <h2>Tomato</h2>
+        <p>₹40/kg</p>
+    </div>
+
+</div>
+
+<footer>
+    Responsive Website Example
+</footer>
+
+</body>
+</html>
