@@ -1,30 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>API Demo</title>
 
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            padding:20px;
-        }
+<title>Fetch API Demo</title>
 
-        button{
-            padding:10px;
-            margin:5px;
-        }
+<style>
 
-        #output{
-            margin-top:20px;
-            border:1px solid black;
-            padding:15px;
-        }
-    </style>
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f4f4f4;
+    text-align:center;
+    padding:30px;
+}
+
+h1{
+    color:#333;
+}
+
+button{
+    background-color:#007bff;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    margin:10px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background-color:#0056b3;
+}
+
+#output{
+    width:60%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px gray;
+    min-height:100px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h2>Fetch API Examples</h2>
+<h1>Fetch API Examples</h1>
 
 <button onclick="getWeather()">
 Weather
@@ -39,84 +63,83 @@ GitHub User
 </button>
 
 <div id="output">
-Output will appear here...
+Click any button to fetch data...
 </div>
 
 <script>
 
 function getWeather()
 {
-    fetch("https://api.open-meteo.com/v1/forecast?latitude=19.03&longitude=73.10&current_weather=true")
+fetch("https://api.open-meteo.com/v1/forecast?latitude=19.03&longitude=73.10&current_weather=true")
 
-    .then(response => response.json())
+.then(response => response.json())
 
-    .then(data => {
+.then(data => {
 
-        document.getElementById("output").innerHTML =
-        "<h3>Weather</h3>" +
-        "Temperature: " +
-        data.current_weather.temperature +
-        " °C <br>" +
+document.getElementById("output").innerHTML =
 
-        "Wind Speed: " +
-        data.current_weather.windspeed +
-        " km/h";
+"<h2>Weather Information</h2>" +
 
-    })
+"<p><b>Temperature:</b> "
++ data.current_weather.temperature +
+" °C</p>" +
 
-    .catch(error => {
-        console.log(error);
-    });
+"<p><b>Wind Speed:</b> "
++ data.current_weather.windspeed +
+" km/h</p>";
+
+})
+
+.catch(error => console.log(error));
 }
+
 
 function getJoke()
 {
-    fetch("https://official-joke-api.appspot.com/random_joke")
+fetch("https://official-joke-api.appspot.com/random_joke")
 
-    .then(response => response.json())
+.then(response => response.json())
 
-    .then(data => {
+.then(data => {
 
-        document.getElementById("output").innerHTML =
-        "<h3>Random Joke</h3>" +
-        data.setup +
-        "<br><br>" +
-        data.punchline;
+document.getElementById("output").innerHTML =
 
-    })
+"<h2>Random Joke</h2>" +
 
-    .catch(error => {
-        console.log(error);
-    });
+"<p>" + data.setup + "</p>" +
+
+"<p><b>" + data.punchline + "</b></p>";
+
+})
+
+.catch(error => console.log(error));
 }
+
 
 function getGithub()
 {
-    fetch("https://api.github.com/users/octocat")
+fetch("https://api.github.com/users/octocat")
 
-    .then(response => response.json())
+.then(response => response.json())
 
-    .then(data => {
+.then(data => {
 
-        document.getElementById("output").innerHTML =
-        "<h3>GitHub User</h3>" +
+document.getElementById("output").innerHTML =
 
-        "Username: " +
-        data.login +
-        "<br><br>" +
+"<h2>GitHub User</h2>" +
 
-        "Followers: " +
-        data.followers +
-        "<br><br>" +
+"<p><b>Username:</b> "
++ data.login + "</p>" +
 
-        "Public Repositories: " +
-        data.public_repos;
+"<p><b>Followers:</b> "
++ data.followers + "</p>" +
 
-    })
+"<p><b>Repositories:</b> "
++ data.public_repos + "</p>";
 
-    .catch(error => {
-        console.log(error);
-    });
+})
+
+.catch(error => console.log(error));
 }
 
 </script>
